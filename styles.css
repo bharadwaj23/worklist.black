@@ -1,10 +1,55 @@
 @import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap');
 
-.custom-container{
-    max-width:600px;
+* {
+    box-sizing: border-box;
 }
-.todo-icon {
-    font-size: 50px;
+
+.bg-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f9fbfe;
+    min-height: 90vh;
+    width: 100vw;
+    padding: 20px;
+}
+
+@media (max-width:768px) {
+    .bg-container {
+        justify-content: flex-start;
+        padding: 30px;
+    }
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 600px;
+}
+
+.title {
+    font-family: roboto;
+    font-weight: bold;
+    font-size: 26px;
+    color: black;
+}
+
+.input-button-container {
+    margin: 10px;
+}
+
+.task-input {
+    border-radius: 10px;
+    border: 1px solid black;
+    outline: none;
+    font-family: roboto;
+    font-size: 12px;
+    height: 40px;
+    width: 300px;
+    text-align: center;
 }
 
 .custom-button {
@@ -18,22 +63,54 @@
     border-radius: 12px;
 }
 
-.bg-container {
-    background-color: #f9fbfe;
-    height: 100vh;
-    padding: 20px;
-    padding-top: 100px;
+.custom-button:hover {
+    cursor: pointer;
 }
 
-.title {
-    font-family: roboto;
-    font-weight: bold;
-    font-size: 26px;
+.save-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
-.task-input {
-    border-radius: 10px;
-    border: 1px solid black;
+.load-icon {
+    margin-right: 20px;
+    width: 30px;
+    height: 30px;
+}
+
+@keyframes animation {
+    0% {
+        stroke-dasharray: 1 98;
+        stroke-dashoffset: -105;
+    }
+
+    50% {
+        stroke-dasharray: 80 10;
+        stroke-dashoffset: -160;
+    }
+
+    100% {
+        stroke-dasharray: 1 98;
+        stroke-dashoffset: -300;
+    }
+}
+
+#spinner {
+    transform-origin: center;
+    animation-name: animation;
+    animation-duration: 1.2s;
+    animation-timing-function: cubic-bezier;
+    animation-iteration-count: infinite;
+}
+
+.buttons-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 200px;
+    margin: 20px;
 }
 
 .sub-title {
@@ -42,24 +119,37 @@
     font-size: 20px;
 }
 
-.tasks-container {
+.todo-container {
     list-style-type: none;
     margin: 0px;
     padding: 0px;
 }
 
-.checkbox {
-    height: 18px;
-    width: 18px;
-    accent-color: black;
+/* for javascript👇 */
+.task-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 15px;
+    transition: transform 0.3s ease;
 }
 
-.checkbox input:checked {
-    background-color: black;
+.checkbox {
+    height: 22px;
+    width: 22px;
+    accent-color: black;
+    margin-right: 10px;
 }
 
 .label-container {
-    max-height: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 40px;
+    min-width: 300px;
+    max-width: 400px;
     border-left: 5px solid black;
     border-bottom: 1px solid black;
     border-top: 1px solid black;
@@ -69,15 +159,54 @@
     font-family: roboto;
     font-size: 14px;
     font-weight: bold;
-    padding: 5px;
+    padding-left: 16px;
+    padding-right: 10px;
+    margin-right: 10px;
 
 }
 
+
+
+.work-container {
+    max-height: 100px;
+    max-width: 200px;
+    overflow-y: auto;
+}
+
 .task {
-    overflow-y: scroll;
-    overflow: auto;
+    font-size: 14px;
+    word-wrap: break-word;
+}
+
+.work-container::-webkit-scrollbar {
+    display: none;
+}
+
+.checkbox input:checked {
+    background-color: black;
+}
+
+.checkbox:hover {
+    cursor: pointer;
 }
 
 .checked {
     text-decoration: line-through;
+}
+
+.time {
+    font-size: 10px;
+    word-wrap: break-word;
+    width: 55px;
+    position: relative;
+    left: 5px;
+    bottom: 2px;
+}
+
+.d-none {
+    display: none;
+}
+
+.delete-icon:hover {
+    cursor: pointer;
 }
